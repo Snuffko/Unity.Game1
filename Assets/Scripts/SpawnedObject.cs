@@ -8,13 +8,13 @@ public class SpawnedObject : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
 
-    void Start()
+    private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    private void Update()
     {
         _rigidbody2D.velocity = new Vector2(-_moveSpeed, _rigidbody2D.velocity.y);
     }
-}
+} 

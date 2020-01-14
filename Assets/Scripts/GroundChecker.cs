@@ -10,13 +10,6 @@ public class GroundChecker : MonoBehaviour
 
     public bool CheckGround()
     {
-        if (Physics2D.OverlapCircle(_point.position, _radius, _whatIsGround))
-        {
-            return true;
-        } 
-        else
-        {
-            return false;
-        }
+        return Physics2D.OverlapCircle(_point.position, _radius, _whatIsGround);
     }
-}
+} 

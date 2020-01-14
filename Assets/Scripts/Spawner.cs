@@ -11,12 +11,20 @@ public class Spawner : MonoBehaviour
     protected float _spawnTimer;
     protected float _halfHeight;
 
-    public virtual void Start() { }
+    private void Start() { 
+        _spawnTimer = Random.Range(_minSpawnTime, _maxSpawnTime);
+        SetHalfHeight();
+    }
 
-    public virtual void Update() { }
+    private void Update() { 
+        TrySpawn();
+    }
 
-    public void Spawn(float positionX, float positionY)
-    {
+    public virtual void SetHalfHeight() {}
+
+    public virtual void TrySpawn() {} 
+
+    protected void Spawn(float positionX, float positionY) {
         Instantiate(_objectToSpawn, new Vector2(positionX, positionY), Quaternion.identity);
     }
 }

@@ -11,4 +11,4 @@ public class Barrier : SpawnedObject
             collision.gameObject.GetComponent<Player>().Die();
         }
     }
-}
+} 

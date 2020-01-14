@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class CoinSpawner : Spawner
 {
-    override public void Start()
-    {
+    override public void SetHalfHeight() {
         _halfHeight = GetComponent<BoxCollider2D>().size.y / 2;
-        _spawnTimer = _minSpawnTime * 2;
     }
 
-    override public void Update()
+    override public void TrySpawn() 
     {
         _spawnTimer -= Time.deltaTime;
         if (_spawnTimer <= 0)
-        {
+        {        
             float positionY = Random.Range(transform.position.y - _halfHeight, transform.position.y + _halfHeight);
             for (int i = 0; i < Random.Range(1, 6); i++)
             {
@@ -23,4 +21,4 @@ public class CoinSpawner : Spawner
             _spawnTimer = Random.Range(_minSpawnTime, _maxSpawnTime);
         }
     }
-}
+} 

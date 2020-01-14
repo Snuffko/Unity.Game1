@@ -11,4 +11,4 @@ public class DeleteArea : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
-}
+} 

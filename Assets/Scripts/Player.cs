@@ -12,13 +12,13 @@ public class Player : MonoBehaviour
     private GroundChecker _groundChecker;
     private int _coinsCollectCount;
    
-    void Start()
+    private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _groundChecker = GetComponent<GroundChecker>();
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -39,4 +39,4 @@ public class Player : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
-}
+} 
