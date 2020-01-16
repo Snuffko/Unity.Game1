@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class BarrierSpawner : Spawner
 {
-    override public void SetHalfHeight() {
-        _halfHeight = _objectToSpawn.GetComponent<BoxCollider2D>().size.y / 2;
+    override public float GetHalfHeight() 
+    {
+        return _objectToSpawn.GetComponent<BoxCollider2D>().size.y / 2;
     }
 
-    override public void TrySpawn() 
+    override public void Spawning() 
     {
-        _spawnTimer -= Time.deltaTime;
-        if (_spawnTimer <= 0)
-        {
-            float positionY = Random.Range(transform.position.y - _halfHeight, transform.position.y);
-            Spawn(transform.position.x, positionY);
-            _spawnTimer = Random.Range(_minSpawnTime, _maxSpawnTime);
-        }
+        float positionY = Random.Range(transform.position.y - _halfHeight, transform.position.y);
+        Spawn(transform.position.x, positionY);
     }
 }

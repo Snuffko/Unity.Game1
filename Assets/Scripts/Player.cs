@@ -4,13 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(GroundChecker))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private Text _coinsValueDisplay;
+    [SerializeField] private float _jumpForce;
 
     private Rigidbody2D _rigidbody;
     private GroundChecker _groundChecker;
-    private int _coinsCollectCount;
+    private int _coinsCollectCount; 
    
     private void Start()
     {
@@ -24,7 +27,7 @@ public class Player : MonoBehaviour
         {
             if (_groundChecker.CheckGround())
             {
-                _rigidbody.AddForce(Vector2.up * 125f, ForceMode2D.Impulse);
+                _rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             }
         }
     }

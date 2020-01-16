@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Scene1");
     }
 
-    public void ChangeAuthorsPanelState()
+    public void OnAuthorsButtonClick()
     {
         _authorsPanelAnimator.SetBool("isOpen", !_authorsPanelAnimator.GetBool("isOpen"));
     }
