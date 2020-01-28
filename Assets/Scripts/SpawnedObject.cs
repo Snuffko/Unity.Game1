@@ -18,4 +18,14 @@ public class SpawnedObject : MonoBehaviour
     {
         _rigidbody2D.velocity = new Vector2(-_moveSpeed, _rigidbody2D.velocity.y);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out Player player))
+        {
+            OnCollision(player);
+        }
+    }
+
+    public virtual void OnCollision(Player player) {}
 } 

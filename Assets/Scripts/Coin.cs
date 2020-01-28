@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Coin : SpawnedObject
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    override public void OnCollision(Player player)
     {
-        if (collision.gameObject.GetComponent<Player>() != null)
-        {
-            collision.gameObject.GetComponent<Player>().PickCoin();
-            Destroy(gameObject);
-        }
+        player.PickCoin();
+        Destroy(gameObject);
     }
 } 
