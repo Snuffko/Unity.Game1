@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : SpawnedObject
+[RequireComponent(typeof(CircleCollider2D))]
+public class Coin : ObjectsPlayerTrigger
 {
     override public void OnCollision(Player player)
     {

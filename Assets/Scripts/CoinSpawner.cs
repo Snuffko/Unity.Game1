@@ -5,17 +5,28 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class CoinSpawner : Spawner
 {
-    override public float GetHalfHeight() 
+    public override float GetHalfHeight()
     {
         return GetComponent<BoxCollider2D>().size.y / 2;
     }
 
-    override public void Spawning() 
+    public override void Spawn(Vector3 position) 
     { 
-        float positionY = Random.Range(transform.position.y - _halfHeight, transform.position.y + _halfHeight);
         for (int i = 0; i < Random.Range(1, 6); i++)
         {
-            Spawn(transform.position.x + i, positionY);
+            _currentPosition.x = position.x + i;
+            CreateObject();
         }        
     }
-} 
+
+    public override Vector3 GetPosition() {
+        float positionY = Random.Range(transform.position.y - _halfHeight, transform.position.y + _halfHeight);
+        return new Vector3(transform.position.x, positionY);
+    }
+
+
+    public override float GetTemplateWidth()
+    {
+        return _template.GetComponent<CircleCollider2D>().radius * 2;
+    }
+}
