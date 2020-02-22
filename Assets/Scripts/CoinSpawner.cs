@@ -19,7 +19,8 @@ public class CoinSpawner : Spawner
         }        
     }
 
-    public override Vector3 GetPosition() {
+    public override Vector3 GetPosition() 
+    {
         float positionY = Random.Range(transform.position.y - _halfHeight, transform.position.y + _halfHeight);
         return new Vector3(transform.position.x, positionY);
     }

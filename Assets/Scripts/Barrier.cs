@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
-public class Barrier : ObjectsPlayerTrigger
+public class Barrier : PlayerTrigger
 {
     public override void OnCollision(Player player)
     {
