@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+abstract public class Spawner : MonoBehaviour
 {
     [SerializeField] protected GameObject _template;
     [SerializeField] protected float _minSpawnTime;
     [SerializeField] protected float _maxSpawnTime;
     [SerializeField] private LayerMask _layerToCheck;
 
-    protected float _spawnTimer;
-    protected float _halfHeight;
-    protected float _radiusToCheck;
-    protected Vector3 _currentPosition;
+    private float _spawnTimer;
+    private float _halfHeight;
+    private float _radiusToCheck;
+    private Vector3 _currentPosition;
 
     private void Start() 
     { 
@@ -35,32 +35,35 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    protected void CreateObject()
+    private Vector3 GetPosition()
     {
-        Instantiate(_template, _currentPosition, Quaternion.identity);
-    }
-
-    public virtual float GetHalfHeight()
-    {
-        return 0;
-    }
-
-    public virtual float GetTemplateWidth()
-    {
-        return 0;
-    }
-
-
-    public virtual void Spawn(Vector3 position) {  
-        CreateObject();
-    } 
-
-    public virtual Vector3 GetPosition() {
-        return new Vector3();
+        float positionY = Random.Range(transform.position.y - _halfHeight, transform.position.y + GetPositionOffset());
+        return new Vector3(transform.position.x, positionY);
     }
 
     private bool CanSpawn()
     {
         return !Physics2D.OverlapCircle(_currentPosition, _radiusToCheck * 1.5f, _layerToCheck);
+    }
+
+    public void SetPositionX(float x)
+    {
+        _currentPosition.x = x;
+    }
+
+    protected void CreateObject()
+    {
+        Instantiate(_template, _currentPosition, Quaternion.identity);
+    }
+
+    protected abstract float GetHalfHeight();
+
+    protected abstract float GetTemplateWidth();
+
+    protected abstract void Spawn(Vector3 position);
+
+    protected virtual float GetPositionOffset()
+    {
+        return _halfHeight;
     }
 }

@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Animator _authorsPanelAnimator;
    
-    public void Play()
+    public void OnPlayButtonClick()
     {
         SceneManager.LoadScene("Scene1");
     }
@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
         _authorsPanelAnimator.SetBool("isOpen", !_authorsPanelAnimator.GetBool("isOpen"));
     }
 
-    public void Exit()
+    public void OnExitButtonClick()
     {
         Application.Quit();
     }

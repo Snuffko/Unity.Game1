@@ -760,6 +760,7 @@ MonoBehaviour:
   _layerToCheck:
     serializedVersion: 2
     m_Bits: 512
+  _maxCoinInLine: 6
 --- !u!1 &1500922432
 GameObject:
   m_ObjectHideFlags: 0
